@@ -10445,17 +10445,47 @@ Disc atrophyOthers
                 // "9." and the very next number is "10."). Anything else — most commonly a restart
                 // at "1./(1)/Ⅰ." — is treated as the note's own nested content and stays inside it.
                 const ROMAN_SEQ = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ', 'Ⅷ', 'Ⅸ', 'Ⅹ'];
+                // Some sections use plain Latin capital letters (I. II. III. IV. ...) instead of the
+                // Unicode roman numeral characters above — same visual level, just typed differently
+                // during the original conversion. A trailing "." is REQUIRED here (unlike the Unicode
+                // check) so this never accidentally matches ordinary text that starts with a capital
+                // letter, e.g. "IgE" or "IU" — those have no period right after the capital run.
+                const LATIN_ROMAN_SEQ = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+                const LATIN_ROMAN_RE = new RegExp('^(' + LATIN_ROMAN_SEQ.slice().reverse().join('|') + ')\\.');
                 const IVX_SEQ = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x'];
+                // Some lists mix Unicode LOWERCASE roman numeral characters (ⅰⅱⅲ..., a separate
+                // Unicode block from the uppercase ⅠⅡⅢ above) with plain ASCII "iii./iv./v." for
+                // later items in the very same list (e.g. "ⅰ. ⅱ. iii. iv. v. vi."). Both represent
+                // the same sub-list level, so this maps into the SAME 'ivx' bucket as the ASCII i/ii/iii
+                // check below, keeping the whole mixed sequence on one consistent indentation level.
+                const LOWER_ROMAN_SEQ = ['ⅰ', 'ⅱ', 'ⅲ', 'ⅳ', 'ⅴ', 'ⅵ', 'ⅶ', 'ⅷ', 'ⅸ', 'ⅹ'];
+                // Parenthesised sub-items can also use Unicode roman numerals, e.g. "(ⅰ)" "(ⅱ)" —
+                // widen the paren content charset to include both roman-numeral Unicode blocks so
+                // these are still recognised as paren markers instead of falling through unmatched.
+                const PAREN_RE = /^\(([0-9a-zA-Z\u4e00-\u9fa5ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅰⅱⅲⅳⅴⅵⅶⅷⅸⅹ]+)\)/;
+                // A handful of sections use a plain uppercase-letter list (A. B. C. D. ...) instead
+                // of numbers/roman numerals for a sub-list — shares the 'alpha' bucket with the
+                // lowercase a./b./c. check below (same visual level, just a different letter case).
+                // Others use Chinese numerals with a 頓號 (一、二、三、四、...) for a top-level list.
+                const CJK_NUM_MAP = { '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9, '十': 10 };
 
                 const classifyMarker = (trimmed) => {
                     let m = trimmed.match(/^(\d+)\./);
                     if (m) return { type: 'digit', value: parseInt(m[1], 10) };
-                    m = trimmed.match(/^\(([0-9a-zA-Z\u4e00-\u9fa5]+)\)/);
+                    m = trimmed.match(/^([一二三四五六七八九十]+)、/);
+                    if (m) return { type: 'cjk', value: CJK_NUM_MAP[m[1]] || null };
+                    m = trimmed.match(PAREN_RE);
                     if (m) return { type: 'paren', value: /^\d+$/.test(m[1]) ? parseInt(m[1], 10) : null };
                     m = trimmed.match(/^([ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ])/);
                     if (m) { const i = ROMAN_SEQ.indexOf(m[1]); return { type: 'roman', value: i >= 0 ? i + 1 : null }; }
+                    m = trimmed.match(LATIN_ROMAN_RE);
+                    if (m) { const i = LATIN_ROMAN_SEQ.indexOf(m[1]); return { type: 'roman', value: i >= 0 ? i + 1 : null }; }
+                    m = trimmed.match(/^([ⅰⅱⅲⅳⅴⅵⅶⅷⅸⅹ])/);
+                    if (m) { const i = LOWER_ROMAN_SEQ.indexOf(m[1]); return { type: 'ivx', value: i >= 0 ? i + 1 : null }; }
                     m = trimmed.match(/^([a-z])\./);
                     if (m) return { type: 'alpha', value: m[1].charCodeAt(0) - 96 };
+                    m = trimmed.match(/^([A-Z])\./);
+                    if (m) return { type: 'alpha', value: m[1].charCodeAt(0) - 64 };
                     m = trimmed.match(/^([ivx]+)\./);
                     if (m) { const i = IVX_SEQ.indexOf(m[1]); return { type: 'ivx', value: i >= 0 ? i + 1 : null }; }
                     if (trimmed.match(/^\[([A-Z0-9-]+)\]$/)) return { type: 'tableMarker', value: null };
@@ -10481,7 +10511,7 @@ Disc atrophyOthers
 
                 const flushNote = () => {
                     if (noteParas && noteParas.length) {
-                        processedParagraphs.push(`<div class="bg-amber-50/70 border-l-4 border-amber-400 p-3 my-2 text-slate-600 text-xs rounded-r-lg space-y-1.5">${noteParas.join('')}</div>`);
+                        processedParagraphs.push(`<div class="bg-amber-50/70 border-l-4 border-amber-400 p-3 my-2 text-slate-700 text-xs rounded-r-lg space-y-1.5">${noteParas.join('')}</div>`);
                     }
                     noteParas = null;
                     noteOuterSnapshot = null;
@@ -10598,16 +10628,16 @@ Disc atrophyOthers
                     if (marker && marker.type !== 'tableMarker' && marker.value !== null) {
                         lastOuter[marker.type] = marker.value;
                     }
-                    if (trimmedPara.match(/^\d+\./)) {
-                        processedParagraphs.push(`<p class="pl-4 -indent-4 mt-2 font-medium text-slate-800">${highlightedPara}</p>`);
-                    } else if (trimmedPara.match(/^\([0-9a-zA-Z\u4e00-\u9fa5]+\)/) || trimmedPara.match(/^\([0-9a-zA-Z\u4e00-\u9fa5]+\)\./)) {
+                    if (marker && (marker.type === 'digit' || marker.type === 'cjk')) {
+                        processedParagraphs.push(`<p class="pl-4 -indent-4 mt-2 font-medium text-slate-700">${highlightedPara}</p>`);
+                    } else if (marker && marker.type === 'paren') {
                         processedParagraphs.push(`<p class="pl-8 -indent-6 mt-1.5 text-slate-700">${highlightedPara}</p>`);
-                    } else if (trimmedPara.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]\./) || trimmedPara.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]/)) {
-                        processedParagraphs.push(`<p class="pl-12 -indent-6 mt-1 text-slate-600 text-sm">${highlightedPara}</p>`);
-                    } else if (trimmedPara.match(/^[a-z]\./) || trimmedPara.match(/^[ivx]+\./)) {
-                        processedParagraphs.push(`<p class="pl-16 -indent-6 mt-1 text-slate-500 text-sm italic">${highlightedPara}</p>`);
+                    } else if (marker && marker.type === 'roman') {
+                        processedParagraphs.push(`<p class="pl-12 -indent-6 mt-1 text-slate-700 text-sm">${highlightedPara}</p>`);
+                    } else if (marker && (marker.type === 'alpha' || marker.type === 'ivx')) {
+                        processedParagraphs.push(`<p class="pl-16 -indent-6 mt-1 text-slate-700 text-sm">${highlightedPara}</p>`);
                     } else {
-                        processedParagraphs.push(`<p class="pl-4 mt-1 text-slate-600">${highlightedPara}</p>`);
+                        processedParagraphs.push(`<p class="pl-4 mt-1 text-slate-700">${highlightedPara}</p>`);
                     }
                 });
                 // Content can end while still inside an open note block — flush it.
