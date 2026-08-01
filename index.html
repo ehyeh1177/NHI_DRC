@@ -155,7 +155,7 @@
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <i data-lucide="search" class="h-5 w-5 text-slate-400"></i>
                         </span>
-                        <input type="text" id="search-input" placeholder="請輸入關鍵字（例如：事前審查、癌症、章節 或 藥品名稱）" class="w-full pl-10 pr-10 py-3 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none text-base placeholder-slate-400 transition-all shadow-inner" autofocus />
+                        <input type="text" id="search-input" placeholder="請輸入關鍵字（例如：乳癌、TKI、事前審查、免疫檢查點、9.69 或 藥品名稱）" class="w-full pl-10 pr-10 py-3 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none text-base placeholder-slate-400 transition-all shadow-inner" autofocus />
                         
                         <!-- Embedded Clear Button on the right inside of input -->
                         <button id="clear-search-btn-embedded" class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 hover:text-slate-600 transition-colors hidden" title="清除關鍵字">
@@ -177,11 +177,11 @@
                     </div>
                     <div class="flex gap-2">
                         <span class="text-slate-400">熱門詞彙：</span>
+                        <button class="hover:text-blue-600 underline quick-tag">免疫檢查點</button>
+                        <button class="hover:text-blue-600 underline quick-tag">多發性骨髓瘤</button>
+                        <button class="hover:text-blue-600 underline quick-tag">早期乳癌</button>
+                        <button class="hover:text-blue-600 underline quick-tag">前列腺癌</button>
                         <button class="hover:text-blue-600 underline quick-tag">事前審查</button>
-                        <button class="hover:text-blue-600 underline quick-tag">非小細胞肺癌</button>
-                        <button class="hover:text-blue-600 underline quick-tag">免疫檢查點抑制劑</button>
-                        <button class="hover:text-blue-600 underline quick-tag">第一線治療</button>
-                        <button class="hover:text-blue-600 underline quick-tag">標靶治療</button>
                     </div>
                 </div>
             </section>
@@ -260,7 +260,7 @@
                     <input type="text" id="edit-field-dates" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none font-mono" placeholder="例如：115/6/1" />
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-1">給付規定內容 <span class="text-red-500">*</span>（每行一個項目，換行即分段；子項目可用 (1) 1. 等符號開頭會自動排版）</label>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">給付規定內容 <span class="text-red-500">*</span>（每行一個項目，換行即分段；子項目可用 (1) 1. 等符號開頭會自動排版；以「備註」開頭的行會自動變成備註樣式，若想手動指定範圍，可用單獨一行 [NOTE] 開始、單獨一行 [/NOTE] 結束，中間不論內容或開頭符號都會整段變成備註樣式）</label>
                     <textarea id="edit-field-content" rows="10" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="1.第一項給付條件...&#10;(1)子項目說明...&#10;2.第二項給付條件..."></textarea>
                 </div>
                 <div id="edit-field-error" class="hidden text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2"></div>
@@ -372,8 +372,7 @@
 Ⅰ.每日藥費為4.5元以下，可用於18歲以上病患。
 Ⅱ.依個別成分規定如下(111/7/1、115/4/1)：
 ⅰ含nabumetone成分之No-Ton、Nabuton及Labuton僅可使用於60歲以上病患。(111/7/1、115/4/1)
-ⅱ含etodolac成分之緩釋錠劑膠囊劑及一般錠劑膠囊劑僅可使用於60歲以上病患，惟單價低於2.25元(如Etopin、Etodon、Jenac、
-Doloc)且每日處方不超過2粒者，可用於18歲以上之病患。
+ⅱ含etodolac成分之緩釋錠劑膠囊劑及一般錠劑膠囊劑僅可使用於60歲以上病患，惟單價低於2.25元(如Etopin、Etodon、Jenac、Doloc)且每日處方不超過2粒者，可用於18歲以上之病患。
 (2)類風濕性關節炎、僵直性脊髓炎、乾癬性關節炎等慢性病發炎性關 節病變，需長期使用非類固醇抗發炎劑者。
 (3)合併有急性嚴重創傷、急性中風及急性心血管事件者 (97/2/1)
 (4)同時併有腎上腺類固醇之患者。
@@ -573,8 +572,7 @@ brexpiprazole 4mg/day (109/1/1)
 I.即使使用急性藥物，反覆發作偏頭痛已嚴重影響到患者的日常生活。
 Ⅱ.特殊病例，如偏癱性偏頭痛、基底性偏頭痛、偏頭痛之前預兆時間過長或是偏頭痛梗塞等。
 Ⅲ.偏頭痛發作頻繁，每星期2次(含)以上。
-(2)Topiramate每日治療劑量超過100mg時，需於病歷詳細記載使用理
-由。`
+(2)Topiramate每日治療劑量超過100mg時，需於病歷詳細記載使用理由。`
             },
             {
                 id: "1.3.2.4",
@@ -5073,8 +5071,8 @@ IV.嚴重的間發性感染症（intercurrent infection）（暫時停藥即可�
             },
             {
                 id: "8.2.6.1",
-                title: `8.2.6.1.Interferon alpha-2a （如Roferon-A）及interferon alpha-2b（如Intron A）; peginterferon alfa-2a（如Pegasys）`,
-                dates: "92/10/1、109/7/1、92/11/1、94/11/1、96/10/1、98/11/1、99/5/1、100/6/1、102/2/1、105/10/1、106/1/1、106/4/1、110/3/1、111/2/1、111/3/1",
+                title: `8.2.6.1.Interferon alpha-2a （如Roferon-A）及interferon alpha-2b（如Intron A）; peginterferon alfa-2a（如Pegasys）（92/11/1-C肝、94/11/1-B肝、96/10/1、98/11/1、99/5/1-B肝、100/6/1-B肝、102/2/1、105/10/1、106/1/1、106/4/1、109/7/1、110/3/1、111/2/1、111/3/1)：`,
+                dates: "92/10/1、109/7/1",
                 content: `1.用於慢性病毒性B型或慢性病毒性C型肝炎患者之條件如下：
 (1)用於慢性病毒性B型肝炎患者
 Ⅰ.HBsAg (+) 超過六個月及HBeAg (+) 超過三個月，且ALT值大於 (或等於) 正常值上限五倍以上 (ALT≧5X)，且無肝功能代償不全者。療程為12個月。（98/11/1、105/10/1）
@@ -7874,28 +7872,28 @@ vi.出現其他end-organ dysfunctions。
                 id: "9.119",
                 title: `9.119. Teclistamab (如Tecvayli)`,
                 dates: "114/5/1、114/8/1",
-                content: `1.適用於治療先前曾接受至少四線療法(包括一種蛋白酶體抑制劑、一種免疫調節劑和一種抗CD38單株抗體)並在最近治療後顯示疾病惡化的復發性或難治性多發性骨髓瘤成人病人，且須具有良好日常體能狀態(ECOG ≤ 2)。
-2.須經事前審查核准後使用：
-(1)首次申請為30mg/3ml規格2次輸注與153mg/1.7ml規格11次輸注，且需同時符合下列Ⅰ.與Ⅱ.的條件：
+                content: `適用於治療先前曾接受至少四線療法(包括一種蛋白酶體抑制劑、一種免疫調節劑和一種抗CD38單株抗體)並在最近治療後顯示疾病惡化的復發性或難治性多發性骨髓瘤成人病人，且須具有良好日常體能狀態(ECOG ≤ 2)。
+須經事前審查核准後使用：
+首次申請為30mg/3ml規格2次輸注與153mg/1.7ml規格11次輸注，且需同時符合下列Ⅰ.與Ⅱ.的條件：
 Ⅰ.具有下列任一疾病惡化的指標：病人開始治療前須在連續2次評估中均符合同一指標 (但若為plamacytoma 體積增加，或是新產生的bone lesion(s)或新plasmacytoma，則僅需1次評估)：
-i.若前一線治療中M component 最低值≧5 g/dL，血清M蛋白需增加≧1 g/dL；若前一線治療中M component 最低值＜5 g/dL，血清M蛋白需增加≧0.5g/dL。
-ii.Urine M-protein需增加≧0.2 gm/24Hr，且需較前一線治療中的最低值增加≧25%。
-iii.在non-secretary myeloma病人，骨髓漿細胞 (plasma cells)之比例絕對值增加≧10%，且需較前一線治療中的最低值增加≧25%。
-iv.新產生的bone lesion(s)或plasmacytoma，且須經病理切片證實。
-v.Plasmacytoma體積增加≧50%。
-vi.周邊血液中漿細胞比例≧20%或漿細胞絕對值≧2000 cells/μL。
+若前一線治療中M component 最低值≧5 g/dL，血清M蛋白需增加≧1 g/dL；若前一線治療中M component 最低值＜5 g/dL，血清M蛋白需增加≧0.5g/dL。
+Urine M-protein需增加≧0.2 gm/24Hr，且需較前一線治療中的最低值增加≧25%。
+在non-secretary myeloma病人，骨髓漿細胞 (plasma cells)之比例絕對值增加≧10%，且需較前一線治療中的最低值增加≧25%。
+新產生的bone lesion(s)或plasmacytoma，且須經病理切片證實。
+Plasmacytoma體積增加≧50%。
+周邊血液中漿細胞比例≧20%或漿細胞絕對值≧2000 cells/μL。
 Ⅱ.出現下列任一臨床症狀：
-i.新產生的bone lesion(s)或plasmacytoma，且須經病理切片證實。
-ii.Plasmacytoma 體積增加≧50%。
-iii.高血鈣(corrected serum calcium＞11.0 mg/dL 或2.75 mmol/L)。
-iv.貧血(Hemoglobin 下降幅度≧ 2gm/dL 且無其他原因可以解釋)。
-v.腎功能惡化(eGFR下降幅度≧25%)，且無其他原因可以解釋。
-vi.出現其他end-organ dysfunctions。
-(2)再次申請時必須確定paraprotein (M-protein)未上升(即表示對藥物有反應或為穩定狀態)，或對部分non-secretory type MM 病人以骨髓檢查plasma cell 為療效依據，方可繼續使用。續用時的申請每次以153mg/1.7ml規格13次輸注為限。
-3.每位病人終生限給付39次輸注(含30mg/3ml規格共2次輸注、153mg/1.7ml規格共37次輸注)。
-4.執行醫師須完全符合下列資格：
-5.醫師必須為血液病或造血幹細胞移植專科醫師且須完成血液病和造血幹細胞移植的相關照護訓練。(114/5/1、114/8/1)
-6.每兩年接受至少6小時中華民國血液及骨髓移植學會或中華民國血液病學會舉辦之雙特異性抗體相關治療教育訓練。
+新產生的bone lesion(s)或plasmacytoma，且須經病理切片證實。
+Plasmacytoma 體積增加≧50%。
+高血鈣(corrected serum calcium＞11.0 mg/dL 或2.75 mmol/L)。
+貧血(Hemoglobin 下降幅度≧ 2gm/dL 且無其他原因可以解釋)。
+腎功能惡化(eGFR下降幅度≧25%)，且無其他原因可以解釋。
+出現其他end-organ dysfunctions。
+再次申請時必須確定paraprotein (M-protein)未上升(即表示對藥物有反應或為穩定狀態)，或對部分non-secretory type MM 病人以骨髓檢查plasma cell 為療效依據，方可繼續使用。續用時的申請每次以153mg/1.7ml規格13次輸注為限。
+每位病人終生限給付39次輸注(含30mg/3ml規格共2次輸注、153mg/1.7ml規格共37次輸注)。
+執行醫師須完全符合下列資格：
+醫師必須為血液病或造血幹細胞移植專科醫師且須完成血液病和造血幹細胞移植的相關照護訓練。(114/5/1、114/8/1)
+每兩年接受至少6小時中華民國血液及骨髓移植學會或中華民國血液病學會舉辦之雙特異性抗體相關治療教育訓練。
 Teclistamab與elranatamab僅能擇一給付，除因耐受性不良，不得互換。二者使用總療程合併計算，以全部39次輸注為上限。`
             },
             {
@@ -10431,16 +10429,102 @@ Disc atrophyOthers
                 
                 // Process content text (split into lines/paragraphs, add highlights)
                 const originalParagraphs = item.content.split('\n');
-                const processedParagraphs = originalParagraphs.map(para => {
+
+                // A "備註/註：/註二：" line kicks off a note block. Source content often wraps a
+                // single note across several \n-separated lines (a real multi-paragraph note that
+                // may even contain its OWN nested numbered/roman/paren sub-items, e.g. a note that
+                // restarts "1./2./3." or "Ⅰ./Ⅱ." to define terms). Previously only the first line
+                // got the amber note styling and any following marker line (even one that belonged
+                // to the note itself) would kick the rest out into plain paragraphs.
+                //
+                // To tell a note's OWN nested list apart from the document simply resuming its
+                // outer list after the note, we remember the last marker value seen in the outer
+                // (non-note) flow for each marker type, and freeze that as a snapshot the moment a
+                // note starts. A marker inside the note is treated as outer continuation (closing
+                // the note) only if it exactly continues that frozen sequence (e.g. outer ended at
+                // "9." and the very next number is "10."). Anything else — most commonly a restart
+                // at "1./(1)/Ⅰ." — is treated as the note's own nested content and stays inside it.
+                const ROMAN_SEQ = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ', 'Ⅷ', 'Ⅸ', 'Ⅹ'];
+                const IVX_SEQ = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x'];
+
+                const classifyMarker = (trimmed) => {
+                    let m = trimmed.match(/^(\d+)\./);
+                    if (m) return { type: 'digit', value: parseInt(m[1], 10) };
+                    m = trimmed.match(/^\(([0-9a-zA-Z\u4e00-\u9fa5]+)\)/);
+                    if (m) return { type: 'paren', value: /^\d+$/.test(m[1]) ? parseInt(m[1], 10) : null };
+                    m = trimmed.match(/^([ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ])/);
+                    if (m) { const i = ROMAN_SEQ.indexOf(m[1]); return { type: 'roman', value: i >= 0 ? i + 1 : null }; }
+                    m = trimmed.match(/^([a-z])\./);
+                    if (m) return { type: 'alpha', value: m[1].charCodeAt(0) - 96 };
+                    m = trimmed.match(/^([ivx]+)\./);
+                    if (m) { const i = IVX_SEQ.indexOf(m[1]); return { type: 'ivx', value: i >= 0 ? i + 1 : null }; }
+                    if (trimmed.match(/^\[([A-Z0-9-]+)\]$/)) return { type: 'tableMarker', value: null };
+                    return null;
+                };
+
+                const processedParagraphs = [];
+                let noteParas = null; // holds accumulated <p> html for the currently-open note block
+                let noteOuterSnapshot = null; // { digit, paren, roman, alpha, ivx } frozen when the note opened
+                // The note can run its own nested numbering (e.g. its "1./2." items, or a "(1)/(2)"
+                // sub-list under one of those items). noteLocal tracks the last value seen INSIDE the
+                // note for each marker type, so e.g. a "(2)" that continues the note's own "(1)" is
+                // recognised as nested even if it also happens to equal (frozen outer value + 1).
+                let noteLocal = null;
+                // Manual override: if the content contains a line that is exactly "[NOTE]" and,
+                // later, a line that is exactly "[/NOTE]", EVERYTHING between them is put in the
+                // amber note box verbatim (one paragraph per line), no auto-detection involved. This
+                // lets an editor hand-pick a note's start/end for sections whose source formatting
+                // doesn't fit the 備註-prefix heuristic, simply by adding those two marker lines in
+                // the content textarea.
+                let explicitNoteMode = false;
+                const lastOuter = { digit: null, paren: null, roman: null, alpha: null, ivx: null };
+
+                const flushNote = () => {
+                    if (noteParas && noteParas.length) {
+                        processedParagraphs.push(`<div class="bg-amber-50/70 border-l-4 border-amber-400 p-3 my-2 text-slate-600 text-xs rounded-r-lg space-y-1.5">${noteParas.join('')}</div>`);
+                    }
+                    noteParas = null;
+                    noteOuterSnapshot = null;
+                    noteLocal = null;
+                    explicitNoteMode = false;
+                };
+
+                originalParagraphs.forEach(para => {
+                    const rawTrimmed = para.trim();
+
+                    // --- Manual override markers: [NOTE] ... [/NOTE] ---
+                    if (rawTrimmed === '[NOTE]') {
+                        flushNote(); // close any auto-detected note that may have been open
+                        noteParas = [];
+                        explicitNoteMode = true;
+                        return;
+                    }
+                    if (rawTrimmed === '[/NOTE]') {
+                        flushNote(); // pushes whatever was collected, and turns explicitNoteMode back off
+                        return;
+                    }
+                    if (explicitNoteMode) {
+                        // Inside a hand-marked note: every line goes in verbatim (still gets
+                        // highlighting/attachment-link handling), no auto-detection is applied.
+                        if (rawTrimmed !== '') {
+                            const { placeholderText, found: attachRefs } = linkifyAttachments(rawTrimmed);
+                            let highlightedPara = highlightText(placeholderText, highlightTerms);
+                            highlightedPara = restoreAttachmentLinks(highlightedPara, attachRefs);
+                            noteParas.push(`<p class="mt-1">${highlightedPara}</p>`);
+                        }
+                        return;
+                    }
+
                     // Check if this line is one of the known data-table placeholder markers
                     // (e.g. [PD-L1-TABLE], [CHOL-TABLE]...). Instead of rendering the wide
                     // table inline (which forces horizontal scrolling on narrow/mobile screens),
                     // show a prompt that opens the table in a shared popup modal instead.
                     const markerMatch = para.trim().match(/^\[([A-Z0-9-]+)\]$/);
                     if (markerMatch && TABLE_MODAL_REGISTRY[markerMatch[1]]) {
+                        flushNote();
                         const key = markerMatch[1];
                         lastTableHighlightTerms = highlightTerms;
-                        return `
+                        processedParagraphs.push(`
                         <div class="my-4 p-4 bg-blue-50 border border-blue-200 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                             <div class="flex items-start sm:items-center gap-2.5 text-blue-800">
                                 <i data-lucide="table-2" class="w-5 h-5 shrink-0 mt-0.5 sm:mt-0"></i>
@@ -10449,30 +10533,85 @@ Disc atrophyOthers
                             <button onclick="openTableModal('${key}')" class="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors shrink-0 flex items-center justify-center gap-1.5 shadow-sm">
                                 <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> 開啟對照表
                             </button>
-                        </div>`;
+                        </div>`);
+                        return;
                     }
 
                     const trimmedPara = para.trim();
                     const { placeholderText, found: attachRefs } = linkifyAttachments(trimmedPara);
                     let highlightedPara = highlightText(placeholderText, highlightTerms);
                     highlightedPara = restoreAttachmentLinks(highlightedPara, attachRefs);
+
+                    const isNoteStart = trimmedPara.startsWith('備註') || trimmedPara.startsWith('註：') || trimmedPara.startsWith('註二：');
+
+                    if (isNoteStart) {
+                        // A new note marker always starts a fresh box, even if one was already open.
+                        flushNote();
+                        noteParas = [`<p>${highlightedPara}</p>`];
+                        noteOuterSnapshot = Object.assign({}, lastOuter);
+                        noteLocal = { digit: null, paren: null, roman: null, alpha: null, ivx: null };
+                        return;
+                    }
+
+                    if (noteParas) {
+                        if (trimmedPara === '') {
+                            // Skip stray blank lines inside a note rather than closing it.
+                            return;
+                        }
+                        const marker = classifyMarker(trimmedPara);
+                        if (marker && marker.value !== null) {
+                            const localVal = noteLocal[marker.type];
+                            const isLocalContinuation = localVal !== null && localVal !== undefined && marker.value === localVal + 1;
+                            if (isLocalContinuation) {
+                                // Continues the note's OWN nested numbering (e.g. its "(1)" is
+                                // followed by its "(2)") — stays inside the note no matter what.
+                                noteLocal[marker.type] = marker.value;
+                                noteParas.push(`<p class="mt-1">${highlightedPara}</p>`);
+                                return;
+                            }
+                            const snapVal = noteOuterSnapshot[marker.type];
+                            const isOuterContinuation = snapVal !== null && snapVal !== undefined && marker.value === snapVal + 1;
+                            if (isOuterContinuation) {
+                                // Exactly continues the surrounding list from before the note started
+                                // (e.g. outer ended at "9.", this is "10.") — back to normal flow.
+                                flushNote();
+                            } else {
+                                // Doesn't continue either sequence — most commonly a restart at
+                                // 1./(1)/Ⅰ., i.e. the note starting its own nested sub-list.
+                                noteLocal[marker.type] = marker.value;
+                                noteParas.push(`<p class="mt-1">${highlightedPara}</p>`);
+                                return;
+                            }
+                        } else {
+                            // No recognisable marker (or a non-numeric one, e.g. Chinese/Latin
+                            // lettered items our patterns don't parse) — plain continuation of the note.
+                            noteParas.push(`<p class="mt-1">${highlightedPara}</p>`);
+                            return;
+                        }
+                    }
+
                     // Match indentation patterns like 1., (1), Ⅰ., i. to add structured spacing.
                     // NOTE: always match against the TRIMMED paragraph — some source data (from the
                     // original .doc conversion) has stray leading tabs/spaces that would otherwise
                     // cause these checks to silently fail and fall through to plain paragraph styling.
-                    if (trimmedPara.match(/^\d+\./)) {
-                        return `<p class="pl-4 -indent-4 mt-2 font-medium text-slate-800">${highlightedPara}</p>`;
-                    } else if (trimmedPara.match(/^\([0-9a-zA-Z\u4e00-\u9fa5]+\)/) || trimmedPara.match(/^\([0-9a-zA-Z\u4e00-\u9fa5]+\)\./)) {
-                        return `<p class="pl-8 -indent-6 mt-1.5 text-slate-700">${highlightedPara}</p>`;
-                    } else if (trimmedPara.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]\./) || trimmedPara.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]/)) {
-                        return `<p class="pl-12 -indent-6 mt-1 text-slate-600 text-sm">${highlightedPara}</p>`;
-                    } else if (trimmedPara.match(/^[a-z]\./) || trimmedPara.match(/^[ivx]+\./)) {
-                        return `<p class="pl-16 -indent-6 mt-1 text-slate-500 text-sm italic">${highlightedPara}</p>`;
-                    } else if (trimmedPara.startsWith('備註') || trimmedPara.startsWith('註：') || trimmedPara.startsWith('註二：')) {
-                        return `<div class="bg-amber-50/70 border-l-4 border-amber-400 p-3 my-2 text-slate-600 text-xs rounded-r-lg">${highlightedPara}</div>`;
+                    const marker = classifyMarker(trimmedPara);
+                    if (marker && marker.type !== 'tableMarker' && marker.value !== null) {
+                        lastOuter[marker.type] = marker.value;
                     }
-                    return `<p class="pl-4 mt-1 text-slate-600">${highlightedPara}</p>`;
+                    if (trimmedPara.match(/^\d+\./)) {
+                        processedParagraphs.push(`<p class="pl-4 -indent-4 mt-2 font-medium text-slate-800">${highlightedPara}</p>`);
+                    } else if (trimmedPara.match(/^\([0-9a-zA-Z\u4e00-\u9fa5]+\)/) || trimmedPara.match(/^\([0-9a-zA-Z\u4e00-\u9fa5]+\)\./)) {
+                        processedParagraphs.push(`<p class="pl-8 -indent-6 mt-1.5 text-slate-700">${highlightedPara}</p>`);
+                    } else if (trimmedPara.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]\./) || trimmedPara.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]/)) {
+                        processedParagraphs.push(`<p class="pl-12 -indent-6 mt-1 text-slate-600 text-sm">${highlightedPara}</p>`);
+                    } else if (trimmedPara.match(/^[a-z]\./) || trimmedPara.match(/^[ivx]+\./)) {
+                        processedParagraphs.push(`<p class="pl-16 -indent-6 mt-1 text-slate-500 text-sm italic">${highlightedPara}</p>`);
+                    } else {
+                        processedParagraphs.push(`<p class="pl-4 mt-1 text-slate-600">${highlightedPara}</p>`);
+                    }
                 });
+                // Content can end while still inside an open note block — flush it.
+                flushNote();
 
                 // If a section has more than 10 lines/paragraphs, collapse it by default and
                 // let the user expand/collapse it with a button, instead of showing one long card.
