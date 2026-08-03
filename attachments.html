@@ -84,7 +84,736 @@
     // -------------------------------------------------------------------
     // 附表附件清單（由 parse_docx.py 解析 + PDF 頁面截圖產生，勿手動編輯）
     // -------------------------------------------------------------------
-    const ATTACHMENTS = [{"label": "附表一", "title": "附表一全民健康保險醫療常用第一線抗微生物製劑品名表", "images": ["att001_p1.png"]}, {"label": "附表二-A", "title": "附表二-A　全民健康保險使用rt-PA(Actilyse)或Tenecteplase (Metalyse)申報表（血管（不含腦血管）血栓病患用）", "images": ["att002_p1.png"]}, {"label": "附表二-B", "title": "附表二-B　全民健康保險使用rt-PA(Actilyse)申報表（急性缺血性腦中風病患用）", "images": ["att003_p1.png"]}, {"label": "附表二-C", "title": "附表二-C  急性缺血性腦中風之血栓溶解治療檢查表", "images": ["att004_p1.png", "att004_p2.png"]}, {"label": "附表二-D", "title": "附表二-D 使用健保給付PCSK9血脂調節劑事前審查申請表", "images": ["att005_p1.png", "att005_p2.png", "att005_p3.png"]}, {"label": "附表三-Ａ", "title": "附表三-Ａ全民健康保險使用維生素之醫治病症", "images": ["att006_p1.png"]}, {"label": "附表三-Ｂ", "title": "附表三-Ｂ全民健康保險使用荷爾蒙之醫治病症", "images": ["att007_p1.png"]}, {"label": "附表四", "title": "附表四全民健康保險使用HumanAlbumin申報表", "images": ["att008_p1.png"]}, {"label": "附表五", "title": "附表五：全民健康保險使用繞徑治療藥物申報表", "images": ["att009_p1.png"]}, {"label": "附表六", "title": "附表六全民健康保險使用IntravenousImmuneGlobulin(IVIG)", "images": ["att010_p1.png"]}, {"label": "附表七之一", "title": "附表七之一全民健康保險使用抗癌藥品Trastuzumab申請表(刪除)", "images": ["att011_p1.png"]}, {"label": "附表七之二", "title": "附表七之二全民健康保險使用抗癌藥品Rituximab申請表", "images": ["att012_p1.png", "att012_p2.png"]}, {"label": "附表八之一", "title": "附表八之一全民健康保險使用抗癌藥品Fludarabine申請表", "images": ["att013_p1.png", "att013_p2.png", "att013_p3.png", "att013_p4.png"]}, {"label": "附表八之三", "title": "附表八之三全民健康保險使用抗癌藥品Pemetrexed申請表", "images": ["att014_p1.png", "att014_p2.png"]}, {"label": "附表八之四", "title": "附表八之四全民健康保險使用抗癌藥品Carmustine植入劑申請表", "images": ["att015_p1.png", "att015_p2.png"]}, {"label": "附表九之一", "title": "附表九之一全民健康保險使用抗癌藥品Gefitinib申請表", "images": ["att016_p1.png", "att016_p2.png"]}, {"label": "附表九之二", "title": "附表九之二全民健康保險使用抗癌藥品Erlotinib申請表", "images": ["att017_p1.png", "att017_p2.png"]}, {"label": "附表九之三", "title": "附表九之三全民健康保險使用抗癌藥品Bortezomib申請表", "images": ["att018_p1.png", "att018_p2.png", "att018_p3.png"]}, {"label": "附表九之四", "title": "附表九之四全民健康保險使用抗癌藥品Dasatinib申請表", "images": ["att019_p1.png", "att019_p2.png"]}, {"label": "附表九之五", "title": "附表九之五全民健康保險使用抗癌藥品Sunitinib申請表", "images": ["att020_p1.png", "att020_p2.png"]}, {"label": "附表九之六", "title": "附表九之六全民健康保險使用抗癌藥品Nilotinib申請表", "images": ["att021_p1.png", "att021_p2.png"]}, {"label": "附表九之七", "title": "附表九之七：全民健康保險使用抗癌藥品Sorafenib申請表", "images": ["att022_p1.png", "att022_p2.png"]}, {"label": "附表九之八", "title": "附表九之八全民健康保險使用抗癌藥品Imatinib申請表", "images": ["att023_p1.png", "att023_p2.png"]}, {"label": "附表九之九", "title": "附表九之九全民健康保險使用抗癌藥品everolimus申請表", "images": ["att024_p1.png", "att024_p2.png"]}, {"label": "附表九之十一", "title": "附表九之十一全民健康保險使用抗癌藥品temsirolimus申請表", "images": ["att025_p1.png", "att025_p2.png"]}, {"label": "附表九之十二", "title": "附表九之十二全民健康保險使用抗癌藥品vinorelbine申請表", "images": ["att026_p1.png", "att026_p2.png"]}, {"label": "附表九之十三", "title": "附表九之十三：全民健康保險使用抗癌藥品pazopanib申請表", "images": ["att027_p1.png", "att027_p2.png"]}, {"label": "附表十", "title": "附表十患者服用Isotretinoin口服製劑同意書", "images": ["att028_p1.png"]}, {"label": "附表十一", "title": "附表十一患者服用Acitretin製劑同意書", "images": ["att029_p1.png"]}, {"label": "附表十三", "title": "附表十三：全民健康保險類風濕關節炎病患28處關節疾病活動度(DiseaseActivityScore,DAS28)評估表", "images": ["att030_p1.png"]}, {"label": "附表十四", "title": "附表十四：全民健康保險疾病修飾抗風濕病藥物(DMARDs)", "images": ["att031_p1.png", "att031_p2.png"]}, {"label": "附表十六", "title": "附表十六：全民健康保險活動性多關節幼年型慢性關節炎使用藥品申請表", "images": ["att032_p1.png", "att032_p2.png"]}, {"label": "附表十七", "title": "附表十七全民健康保險使用Tacrolimus兒童患部面積計算圖", "images": ["att033_p1.png"]}, {"label": "附表十八之一", "title": "附表十八之一  全民健康保險血友病患者使用「第八、第九凝血因子」在家治療紀錄表", "images": ["att034_p1.png", "att034_p2.png", "att034_p3.png"]}, {"label": "附表十八之二", "title": "附表十八之二  全民健康保險血友病患者使用「繞徑治療藥物」在家治療紀錄表", "images": ["att035_p1.png", "att035_p2.png", "att035_p3.png"]}, {"label": "附表十八之三", "title": "附表十八之三  全民健康保險一般型血友病患需要時治療之凝血因子建議劑量", "images": ["att036_p1.png", "att036_p2.png"]}, {"label": "附表十八之四", "title": "附表十八之四  全民健康保險血友病患者使用「第十三凝血因子」在家治療紀錄表", "images": ["att037_p1.png", "att037_p2.png"]}, {"label": "附表十八之五", "title": "附表十八之五 重型血友病患「醫療評估追蹤紀錄表」", "images": ["att038_p1.png", "att038_p2.png"]}, {"label": "附表十八之六", "title": "附表十八之六  全民健康保險血友病患者使用「雙特異性單株抗體藥物」在家治療紀錄表", "images": ["att039_p1.png", "att039_p2.png", "att039_p3.png"]}, {"label": "附表十九", "title": "附表十九全民健康保險使用Pilocarpinehydrochloride口服劑型治療後，", "images": ["att040_p1.png"]}, {"label": "附表二十", "title": "附表二十全民健康保險使用Cevimelinehydrochloride治療後，", "images": ["att041_p1.png"]}, {"label": "附表二十一之一", "title": "附表二十一之一全民健康保險僵直性脊椎炎使用生物製劑申請表", "images": ["att042_p1.png", "att042_p2.png", "att042_p3.png"]}, {"label": "附表二十一之二", "title": "附表二十一之二NSAID藥物副作用：", "images": ["att043_p1.png", "att043_p2.png"]}, {"label": "附表二十二之一", "title": "附表二十二之一：全民健康保險乾癬性周邊關節炎使用生物製劑註申請表(第一頁)", "images": ["att044_p1.png", "att044_p2.png"]}, {"label": "附表二十二之二", "title": "附表二十二之二：乾癬性周邊關節炎使用DMARDs標準目標劑量及有效治療劑量的定義", "images": ["att045_p1.png"]}, {"label": "附表二十二之三", "title": "附表二十二之三：乾癬性關節炎評估表", "images": ["att046_p1.png", "att046_p2.png"]}, {"label": "附表二十二之四", "title": "附表二十二之四：全民健康保險乾癬性脊椎病變使用生物製劑申請表(第一頁)", "images": ["att047_p1.png", "att047_p2.png"]}, {"label": "附表二十二之五", "title": "附表二十二之五：NSAID藥物副作用", "images": ["att048_p1.png", "att048_p2.png", "att048_p3.png"]}, {"label": "附表二十二之六", "title": "附表二十二之六：全民健康保險乾癬性周邊關節炎使用", "images": ["att049_p1.png", "att049_p2.png", "att049_p3.png"]}, {"label": "附表二十三", "title": "附表二十三：全民健康保險使用rituximab申請表", "images": ["att050_p1.png", "att050_p2.png", "att050_p3.png", "att050_p4.png"]}, {"label": "附表二十四之一", "title": "附表二十四之一：全民健康保險乾癬使用生物製劑申請表", "images": ["att051_p1.png", "att051_p2.png", "att051_p3.png"]}, {"label": "附表二十四之二", "title": "附表二十四之二：全民健康保險乾癬（慢性紅皮症乾癬部分）使用Etanercept/Adalimumab/Ustekinumab/Secukinumab申請表", "images": ["att052_p1.png", "att052_p2.png", "att052_p3.png"]}, {"label": "附表二十四之三", "title": "附表二十四之三：乾癬面積暨嚴重度指數【PsoriasisAreaSeverityIndex(PASI)】", "images": ["att053_p1.png"]}, {"label": "附表二十四之四", "title": "附表二十四之四：全民健康保險乾癬(全身型急性膿疱性乾癬部分)使用生物製劑申請表", "images": ["att054_p1.png", "att054_p2.png"]}, {"label": "附表二十四之五", "title": "附表二十四之五：掌蹠膿皰症面積暨嚴重度指數【Palmoplantar Pustulosis Area Severity Index (PPPASI)】", "images": ["att055_p1.png"]}, {"label": "附表二十四之六", "title": "附表二十四之六：全民健康保險掌蹠膿皰症使用生物製劑申請表", "images": ["att056_p1.png", "att056_p2.png"]}, {"label": "附表二十四之七", "title": "附表二十四之七：全民健康保險乾癬使用apremilast、deucravacitinib申請表", "images": ["att057_p1.png", "att057_p2.png"]}, {"label": "附表二十六之一", "title": "附表二十六之一全民健康保險克隆氏症使用生物製劑申請表", "images": ["att058_p1.png", "att058_p2.png", "att058_p3.png", "att058_p4.png"]}, {"label": "附表二十六之二", "title": "附表二十六之二CDAI（Crohn’sdiseaseactivityindex）總分最高為600分", "images": ["att059_p1.png"]}, {"label": "附表二十六之三", "title": "附表二十六之三", "images": ["att060_p1.png", "att060_p2.png"]}, {"label": "附表二十六之四", "title": "附表二十六之四PCDAI（Pediatric Crohn’s disease activity index）", "images": ["att061_p1.png", "att061_p2.png", "att061_p3.png"]}, {"label": "附表二十六之五", "title": "附表二十六之五：全民健康保險潰瘍性結腸炎使用生物製劑申請表", "images": ["att062_p1.png", "att062_p2.png", "att062_p3.png"]}, {"label": "附表二十六之六", "title": "附表二十六之六：Mayo Score", "images": ["att063_p1.png"]}, {"label": "附表二十六之七", "title": "附表二十六之七 全民健康保險小兒潰瘍性結腸炎使用adalimumab、infliximab申請表", "images": ["att064_p1.png", "att064_p2.png"]}, {"label": "附表二十六之八", "title": "附表二十六之八 小兒潰瘍性結腸炎PUCAI Score", "images": ["att065_p1.png"]}, {"label": "附表二十七", "title": "附表二十七全民健康保險眼科含cyclosporine製劑事前審查申請書", "images": ["att066_p1.png", "att066_p2.png"]}, {"label": "附表二十九之一", "title": "附表二十九之一 全民健康保險新生血管抑制劑(Anti-angiogenic agents) 事前審查申請表(DME、CRVO、CNV、BRVO)", "images": ["att067_p1.png", "att067_p2.png", "att067_p3.png", "att067_p4.png"]}, {"label": "附表二十九之二", "title": "附表二十九之二全民健康保險新生血管抑制劑(Anti-angiogenic agents)事前審查申請表(wAMD、PCV)", "images": ["att068_p1.png", "att068_p2.png", "att068_p3.png"]}, {"label": "附表三十之一", "title": "附表三十之一全民健康保險使用陣發性夜間血紅素尿症治療藥品eculizumab、ravulizumab、crovalimab特殊專案審查申請表", "images": ["att069_p1.png", "att069_p2.png"]}, {"label": "附表三十之二", "title": "附表三十之二陣發性夜間血紅素尿症患者特殊專案審查申請Soliris(eculizumab)、Ultomiris(ravulizumab)、Piasky(crovalimab)用藥檢附資料查檢表", "images": ["att070_p1.png", "att070_p2.png", "att070_p3.png", "att070_p4.png"]}, {"label": "附表三十之三", "title": "附表三十之三全民健康保險使用陣發性夜間血紅素尿症第二線治療藥品danicopan+eculizumab/ravulizumab 特殊專案審查申請表", "images": ["att071_p1.png", "att071_p2.png"]}, {"label": "附表三十之四", "title": "附表三十之四陣發性夜間血紅素尿症患者第二線治療藥品特殊專案審查申請Voydeya(Danicopan)+Soliris(eculizumab)/Ultomiris(ravulizumab)用藥檢附資料查檢表", "images": ["att072_p1.png", "att072_p2.png", "att072_p3.png"]}, {"label": "附表三十一", "title": "附表三十一：全民健康保險使用abatacept申請表", "images": ["att073_p1.png", "att073_p2.png"]}, {"label": "附表三十二", "title": "附表三十二：異位性皮膚炎面積暨嚴重度指數【Eczema Area and Severity Index (EASI)】", "images": ["att074_p1.png", "att074_p2.png", "att074_p3.png", "att074_p4.png", "att074_p5.png"]}, {"label": "附表三十二之一", "title": "附表三十二之一：全民健康保險12歲以上病人異位性皮膚炎使用生物製劑申請表", "images": ["att075_p1.png", "att075_p2.png", "att075_p3.png", "att075_p4.png", "att075_p5.png", "att075_p6.png"]}, {"label": "附表三十二之二", "title": "附表三十二之二：全民健康保險6歲以上未滿12歲兒童", "images": ["att076_p1.png", "att076_p2.png", "att076_p3.png", "att076_p4.png", "att076_p5.png", "att076_p6.png"]}, {"label": "附表三十三", "title": "附表三十三 全民健康保險遺傳性血管性水腫患者使用Icatibant/Human C1 esterase inhibitor治療紀錄表", "images": ["att077_p1.png", "att077_p2.png", "att077_p3.png"]}, {"label": "附表三十四", "title": "附表三十四：肝炎治療醫療資源不足地區及山地離島地區一覽表", "images": ["att078_p1.png", "att078_p2.png"]}, {"label": "附表三十五", "title": "附表三十五：成人中風後之手臂或下肢痙攣", "images": ["att079_p1.png", "att079_p2.png", "att079_p3.png"]}, {"label": "附表三十六", "title": "附表三十六：全民健康保險狼瘡腎炎使用belimumab生物製劑申請表", "images": ["att080_p1.png", "att080_p2.png", "att080_p3.png"]}, {"label": "附表三十六之一", "title": "附表三十六之一：全民健康保險全身性狼瘡5-17歲病人使用belimumab生物製劑申請表", "images": ["att081_p1.png", "att081_p2.png", "att081_p3.png", "att081_p4.png"]}, {"label": "附表三十六之二", "title": "附表三十六之二SELENA SLEDAI積分表", "images": ["att082_p1.png", "att082_p2.png", "att082_p3.png", "att082_p4.png", "att082_p5.png", "att082_p6.png", "att082_p7.png", "att082_p8.png"]}, {"label": "附表三十七", "title": "附表三十七-全民健康保險保險對象使用onasemnogene abeparvovec基因療法製劑協議書", "images": ["att083_p1.png", "att083_p2.png", "att083_p3.png"]}, {"label": "附表三十八", "title": "附表三十八-全民健康保險保險對象使用eladocagene exuparvovec基因療法製劑協議書", "images": ["att084_p1.png"]}];
+    const ATTACHMENTS = [
+ {
+  "label": "附表一",
+  "title": "附表一全民健康保險醫療常用第一線抗微生物製劑品名表",
+  "images": [
+   "att001_p1.png",
+   "att001_p2.png"
+  ]
+ },
+ {
+  "label": "附表二-A",
+  "title": "附表二-A　全民健康保險使用rt-PA(Actilyse)或Tenecteplase (Metalyse)申報表（血管（不含腦血管）血栓病患用）",
+  "images": [
+   "att002_p1.png",
+   "att002_p2.png"
+  ]
+ },
+ {
+  "label": "附表二-B",
+  "title": "附表二-B　全民健康保險使用rt-PA(Actilyse)申報表（急性缺血性腦中風病患用）",
+  "images": [
+   "att003_p1.png",
+   "att003_p2.png"
+  ]
+ },
+ {
+  "label": "附表二-C",
+  "title": "附表二-C  急性缺血性腦中風之血栓溶解治療檢查表",
+  "images": [
+   "att004_p1.png",
+   "att004_p2.png",
+   "att004_p3.png"
+  ]
+ },
+ {
+  "label": "附表二-D",
+  "title": "附表二-D 使用健保給付PCSK9血脂調節劑事前審查申請表",
+  "images": [
+   "att005_p1.png",
+   "att005_p2.png",
+   "att005_p3.png"
+  ]
+ },
+ {
+  "label": "附表三-Ａ",
+  "title": "附表三-Ａ全民健康保險使用維生素之醫治病症",
+  "images": [
+   "att006_p1.png"
+  ]
+ },
+ {
+  "label": "附表三-Ｂ",
+  "title": "附表三-Ｂ全民健康保險使用荷爾蒙之醫治病症",
+  "images": [
+   "att007_p1.png"
+  ]
+ },
+ {
+  "label": "附表四",
+  "title": "附表四全民健康保險使用HumanAlbumin申報表",
+  "images": [
+   "att008_p1.png",
+   "att008_p2.png"
+  ]
+ },
+ {
+  "label": "附表五",
+  "title": "附表五：全民健康保險使用繞徑治療藥物申報表",
+  "images": [
+   "att009_p1.png"
+  ]
+ },
+ {
+  "label": "附表六",
+  "title": "附表六全民健康保險使用IntravenousImmuneGlobulin(IVIG)",
+  "images": [
+   "att010_p1.png",
+   "att010_p2.png"
+  ]
+ },
+ {
+  "label": "附表七之一",
+  "title": "附表七之一全民健康保險使用抗癌藥品Trastuzumab申請表(刪除)",
+  "images": [
+   "att011_p1.png",
+   "att011_p2.png"
+  ]
+ },
+ {
+  "label": "附表七之二",
+  "title": "附表七之二全民健康保險使用抗癌藥品Rituximab申請表",
+  "images": [
+   "att012_p1.png",
+   "att012_p2.png"
+  ]
+ },
+ {
+  "label": "附表八之一",
+  "title": "附表八之一全民健康保險使用抗癌藥品Fludarabine申請表",
+  "images": [
+   "att013_p1.png"
+  ]
+ },
+ {
+  "label": "附表八之二",
+  "title": "附表八之二　全民健康保險使用抗癌藥品Temozolomide申請表",
+  "images": [
+   "att014_p1.png",
+   "att014_p2.png",
+   "att014_p3.png"
+  ]
+ },
+ {
+  "label": "附表八之三",
+  "title": "附表八之三全民健康保險使用抗癌藥品Pemetrexed申請表",
+  "images": [
+   "att015_p1.png",
+   "att015_p2.png"
+  ]
+ },
+ {
+  "label": "附表八之四",
+  "title": "附表八之四全民健康保險使用抗癌藥品Carmustine植入劑申請表",
+  "images": [
+   "att016_p1.png",
+   "att016_p2.png"
+  ]
+ },
+ {
+  "label": "附表九之一",
+  "title": "附表九之一全民健康保險使用抗癌藥品Gefitinib申請表",
+  "images": [
+   "att017_p1.png",
+   "att017_p2.png"
+  ]
+ },
+ {
+  "label": "附表九之二",
+  "title": "附表九之二全民健康保險使用抗癌藥品Erlotinib申請表",
+  "images": [
+   "att018_p1.png",
+   "att018_p2.png"
+  ]
+ },
+ {
+  "label": "附表九之三",
+  "title": "附表九之三全民健康保險使用抗癌藥品Bortezomib申請表",
+  "images": [
+   "att019_p1.png",
+   "att019_p2.png",
+   "att019_p3.png"
+  ]
+ },
+ {
+  "label": "附表九之四",
+  "title": "附表九之四全民健康保險使用抗癌藥品Dasatinib申請表",
+  "images": [
+   "att020_p1.png",
+   "att020_p2.png"
+  ]
+ },
+ {
+  "label": "附表九之五",
+  "title": "附表九之五全民健康保險使用抗癌藥品Sunitinib申請表",
+  "images": [
+   "att021_p1.png",
+   "att021_p2.png"
+  ]
+ },
+ {
+  "label": "附表九之六",
+  "title": "附表九之六全民健康保險使用抗癌藥品Nilotinib申請表",
+  "images": [
+   "att022_p1.png",
+   "att022_p2.png"
+  ]
+ },
+ {
+  "label": "附表九之七",
+  "title": "附表九之七：全民健康保險使用抗癌藥品Sorafenib申請表",
+  "images": [
+   "att023_p1.png",
+   "att023_p2.png"
+  ]
+ },
+ {
+  "label": "附表九之八",
+  "title": "附表九之八全民健康保險使用抗癌藥品Imatinib申請表",
+  "images": [
+   "att024_p1.png",
+   "att024_p2.png",
+   "att024_p3.png"
+  ]
+ },
+ {
+  "label": "附表九之九",
+  "title": "附表九之九全民健康保險使用抗癌藥品everolimus申請表",
+  "images": [
+   "att025_p1.png",
+   "att025_p2.png",
+   "att025_p3.png"
+  ]
+ },
+ {
+  "label": "附表九之十一",
+  "title": "附表九之十一全民健康保險使用抗癌藥品temsirolimus申請表",
+  "images": [
+   "att026_p1.png",
+   "att026_p2.png"
+  ]
+ },
+ {
+  "label": "附表九之十二",
+  "title": "附表九之十二全民健康保險使用抗癌藥品vinorelbine申請表",
+  "images": [
+   "att027_p1.png",
+   "att027_p2.png",
+   "att027_p3.png"
+  ]
+ },
+ {
+  "label": "附表九之十三",
+  "title": "附表九之十三：全民健康保險使用抗癌藥品pazopanib申請表",
+  "images": [
+   "att028_p1.png"
+  ]
+ },
+ {
+  "label": "附表十",
+  "title": "附表十患者服用Isotretinoin口服製劑同意書",
+  "images": [
+   "att029_p1.png"
+  ]
+ },
+ {
+  "label": "附表十一",
+  "title": "附表十一患者服用Acitretin製劑同意書",
+  "images": [
+   "att030_p1.png"
+  ]
+ },
+ {
+  "label": "附表十三",
+  "title": "附表十三：全民健康保險類風濕關節炎病患28處關節疾病活動度(DiseaseActivityScore,DAS28)評估表",
+  "images": [
+   "att031_p1.png"
+  ]
+ },
+ {
+  "label": "附表十四",
+  "title": "附表十四：全民健康保險疾病修飾抗風濕病藥物(DMARDs)",
+  "images": [
+   "att032_p1.png",
+   "att032_p2.png"
+  ]
+ },
+ {
+  "label": "附表十六",
+  "title": "附表十六：全民健康保險活動性多關節幼年型慢性關節炎使用藥品申請表",
+  "images": [
+   "att033_p1.png",
+   "att033_p2.png"
+  ]
+ },
+ {
+  "label": "附表十七",
+  "title": "附表十七全民健康保險使用Tacrolimus兒童患部面積計算圖",
+  "images": [
+   "att034_p1.png",
+   "att034_p2.png"
+  ]
+ },
+ {
+  "label": "附表十八之一",
+  "title": "附表十八之一  全民健康保險血友病患者使用「第八、第九凝血因子」在家治療紀錄表",
+  "images": [
+   "att035_p1.png",
+   "att035_p2.png",
+   "att035_p3.png",
+   "att035_p4.png"
+  ]
+ },
+ {
+  "label": "附表十八之二",
+  "title": "附表十八之二  全民健康保險血友病患者使用「繞徑治療藥物」在家治療紀錄表",
+  "images": [
+   "att036_p1.png",
+   "att036_p2.png",
+   "att036_p3.png",
+   "att036_p4.png"
+  ]
+ },
+ {
+  "label": "附表十八之三",
+  "title": "附表十八之三  全民健康保險一般型血友病患需要時治療之凝血因子建議劑量",
+  "images": [
+   "att037_p1.png",
+   "att037_p2.png",
+   "att037_p3.png"
+  ]
+ },
+ {
+  "label": "附表十八之四",
+  "title": "附表十八之四  全民健康保險血友病患者使用「第十三凝血因子」在家治療紀錄表",
+  "images": [
+   "att038_p1.png",
+   "att038_p2.png"
+  ]
+ },
+ {
+  "label": "附表十八之五",
+  "title": "附表十八之五 重型血友病患「醫療評估追蹤紀錄表」",
+  "images": [
+   "att039_p1.png",
+   "att039_p2.png",
+   "att039_p3.png"
+  ]
+ },
+ {
+  "label": "附表十八之六",
+  "title": "附表十八之六  全民健康保險血友病患者使用「雙特異性單株抗體藥物」在家治療紀錄表",
+  "images": [
+   "att040_p1.png",
+   "att040_p2.png",
+   "att040_p3.png",
+   "att040_p4.png"
+  ]
+ },
+ {
+  "label": "附表十九",
+  "title": "附表十九全民健康保險使用Pilocarpinehydrochloride口服劑型治療後，",
+  "images": [
+   "att041_p1.png"
+  ]
+ },
+ {
+  "label": "附表二十",
+  "title": "附表二十全民健康保險使用Cevimelinehydrochloride治療後，",
+  "images": [
+   "att042_p1.png"
+  ]
+ },
+ {
+  "label": "附表二十一之一",
+  "title": "附表二十一之一全民健康保險僵直性脊椎炎使用生物製劑申請表",
+  "images": [
+   "att043_p1.png",
+   "att043_p2.png",
+   "att043_p3.png",
+   "att043_p4.png"
+  ]
+ },
+ {
+  "label": "附表二十一之二",
+  "title": "附表二十一之二NSAID藥物副作用：",
+  "images": [
+   "att044_p1.png",
+   "att044_p2.png",
+   "att044_p3.png"
+  ]
+ },
+ {
+  "label": "附表二十二之一",
+  "title": "附表二十二之一：全民健康保險乾癬性周邊關節炎使用生物製劑註申請表(第一頁)",
+  "images": [
+   "att045_p1.png",
+   "att045_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十二之二",
+  "title": "附表二十二之二：乾癬性周邊關節炎使用DMARDs標準目標劑量及有效治療劑量的定義",
+  "images": [
+   "att046_p1.png"
+  ]
+ },
+ {
+  "label": "附表二十二之三",
+  "title": "附表二十二之三：乾癬性關節炎評估表",
+  "images": [
+   "att047_p1.png",
+   "att047_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十二之四",
+  "title": "附表二十二之四：全民健康保險乾癬性脊椎病變使用生物製劑申請表(第一頁)",
+  "images": [
+   "att048_p1.png",
+   "att048_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十二之五",
+  "title": "附表二十二之五：NSAID藥物副作用",
+  "images": [
+   "att049_p1.png",
+   "att049_p2.png",
+   "att049_p3.png"
+  ]
+ },
+ {
+  "label": "附表二十二之六",
+  "title": "附表二十二之六：全民健康保險乾癬性周邊關節炎使用",
+  "images": [
+   "att050_p1.png",
+   "att050_p2.png",
+   "att050_p3.png"
+  ]
+ },
+ {
+  "label": "附表二十三",
+  "title": "附表二十三：全民健康保險使用rituximab申請表",
+  "images": [
+   "att051_p1.png",
+   "att051_p2.png",
+   "att051_p3.png"
+  ]
+ },
+ {
+  "label": "附表二十四之一",
+  "title": "附表二十四之一：全民健康保險乾癬使用生物製劑申請表",
+  "images": [
+   "att052_p1.png",
+   "att052_p2.png",
+   "att052_p3.png"
+  ]
+ },
+ {
+  "label": "附表二十四之二",
+  "title": "附表二十四之二：全民健康保險乾癬（慢性紅皮症乾癬部分）使用Etanercept/Adalimumab/Ustekinumab/Secukinumab申請表",
+  "images": [
+   "att053_p1.png",
+   "att053_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十四之三",
+  "title": "附表二十四之三：乾癬面積暨嚴重度指數【PsoriasisAreaSeverityIndex(PASI)】",
+  "images": [
+   "att054_p1.png"
+  ]
+ },
+ {
+  "label": "附表二十四之四",
+  "title": "附表二十四之四：全民健康保險乾癬(全身型急性膿疱性乾癬部分)使用生物製劑申請表",
+  "images": [
+   "att055_p1.png",
+   "att055_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十四之五",
+  "title": "附表二十四之五：掌蹠膿皰症面積暨嚴重度指數【Palmoplantar Pustulosis Area Severity Index (PPPASI)】",
+  "images": [
+   "att056_p1.png"
+  ]
+ },
+ {
+  "label": "附表二十四之六",
+  "title": "附表二十四之六：全民健康保險掌蹠膿皰症使用生物製劑申請表",
+  "images": [
+   "att057_p1.png",
+   "att057_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十四之七",
+  "title": "附表二十四之七：全民健康保險乾癬使用apremilast、deucravacitinib申請表",
+  "images": [
+   "att058_p1.png",
+   "att058_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十六之一",
+  "title": "附表二十六之一全民健康保險克隆氏症使用生物製劑申請表",
+  "images": [
+   "att059_p1.png",
+   "att059_p2.png",
+   "att059_p3.png",
+   "att059_p4.png"
+  ]
+ },
+ {
+  "label": "附表二十六之二",
+  "title": "附表二十六之二CDAI（Crohn’sdiseaseactivityindex）總分最高為600分",
+  "images": [
+   "att060_p1.png"
+  ]
+ },
+ {
+  "label": "附表二十六之三",
+  "title": "附表二十六之三",
+  "images": [
+   "att061_p1.png",
+   "att061_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十六之四",
+  "title": "附表二十六之四PCDAI（Pediatric Crohn’s disease activity index）",
+  "images": [
+   "att062_p1.png",
+   "att062_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十六之五",
+  "title": "附表二十六之五：全民健康保險潰瘍性結腸炎使用生物製劑申請表",
+  "images": [
+   "att063_p1.png",
+   "att063_p2.png",
+   "att063_p3.png"
+  ]
+ },
+ {
+  "label": "附表二十六之六",
+  "title": "附表二十六之六：Mayo Score",
+  "images": [
+   "att064_p1.png"
+  ]
+ },
+ {
+  "label": "附表二十六之七",
+  "title": "附表二十六之七 全民健康保險小兒潰瘍性結腸炎使用adalimumab、infliximab申請表",
+  "images": [
+   "att065_p1.png",
+   "att065_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十六之八",
+  "title": "附表二十六之八 小兒潰瘍性結腸炎PUCAI Score",
+  "images": [
+   "att066_p1.png"
+  ]
+ },
+ {
+  "label": "附表二十七",
+  "title": "附表二十七全民健康保險眼科含cyclosporine製劑事前審查申請書",
+  "images": [
+   "att067_p1.png",
+   "att067_p2.png"
+  ]
+ },
+ {
+  "label": "附表二十九之一",
+  "title": "附表二十九之一 全民健康保險新生血管抑制劑(Anti-angiogenic agents) 事前審查申請表(DME、CRVO、CNV、BRVO)",
+  "images": [
+   "att068_p1.png",
+   "att068_p2.png",
+   "att068_p3.png",
+   "att068_p4.png"
+  ]
+ },
+ {
+  "label": "附表二十九之二",
+  "title": "附表二十九之二全民健康保險新生血管抑制劑(Anti-angiogenic agents)事前審查申請表(wAMD、PCV)",
+  "images": [
+   "att069_p1.png",
+   "att069_p2.png",
+   "att069_p3.png",
+   "att069_p4.png"
+  ]
+ },
+ {
+  "label": "附表三十之一",
+  "title": "附表三十之一全民健康保險使用陣發性夜間血紅素尿症治療藥品eculizumab、ravulizumab、crovalimab特殊專案審查申請表",
+  "images": [
+   "att070_p1.png",
+   "att070_p2.png",
+   "att070_p3.png"
+  ]
+ },
+ {
+  "label": "附表三十之二",
+  "title": "附表三十之二陣發性夜間血紅素尿症患者特殊專案審查申請Soliris(eculizumab)、Ultomiris(ravulizumab)、Piasky(crovalimab)用藥檢附資料查檢表",
+  "images": [
+   "att071_p1.png",
+   "att071_p2.png",
+   "att071_p3.png",
+   "att071_p4.png",
+   "att071_p5.png"
+  ]
+ },
+ {
+  "label": "附表三十之三",
+  "title": "附表三十之三全民健康保險使用陣發性夜間血紅素尿症第二線治療藥品danicopan+eculizumab/ravulizumab 特殊專案審查申請表",
+  "images": [
+   "att072_p1.png",
+   "att072_p2.png",
+   "att072_p3.png"
+  ]
+ },
+ {
+  "label": "附表三十之四",
+  "title": "附表三十之四陣發性夜間血紅素尿症患者第二線治療藥品特殊專案審查申請Voydeya(Danicopan)+Soliris(eculizumab)/Ultomiris(ravulizumab)用藥檢附資料查檢表",
+  "images": [
+   "att073_p1.png",
+   "att073_p2.png",
+   "att073_p3.png"
+  ]
+ },
+ {
+  "label": "附表三十一",
+  "title": "附表三十一：全民健康保險使用abatacept申請表",
+  "images": [
+   "att074_p1.png",
+   "att074_p2.png",
+   "att074_p3.png"
+  ]
+ },
+ {
+  "label": "附表三十二",
+  "title": "附表三十二：異位性皮膚炎面積暨嚴重度指數【Eczema Area and Severity Index (EASI)】",
+  "images": [
+   "att075_p1.png",
+   "att075_p2.png",
+   "att075_p3.png",
+   "att075_p4.png",
+   "att075_p5.png"
+  ]
+ },
+ {
+  "label": "附表三十二之一",
+  "title": "附表三十二之一：全民健康保險12歲以上病人異位性皮膚炎使用生物製劑申請表",
+  "images": [
+   "att076_p1.png",
+   "att076_p2.png",
+   "att076_p3.png",
+   "att076_p4.png",
+   "att076_p5.png",
+   "att076_p6.png"
+  ]
+ },
+ {
+  "label": "附表三十二之二",
+  "title": "附表三十二之二：全民健康保險6歲以上未滿12歲兒童",
+  "images": [
+   "att077_p1.png",
+   "att077_p2.png",
+   "att077_p3.png",
+   "att077_p4.png",
+   "att077_p5.png",
+   "att077_p6.png",
+   "att077_p7.png"
+  ]
+ },
+ {
+  "label": "附表三十三",
+  "title": "附表三十三 全民健康保險遺傳性血管性水腫患者使用Icatibant/Human C1 esterase inhibitor治療紀錄表",
+  "images": [
+   "att078_p1.png",
+   "att078_p2.png",
+   "att078_p3.png",
+   "att078_p4.png"
+  ]
+ },
+ {
+  "label": "附表三十四",
+  "title": "附表三十四：肝炎治療醫療資源不足地區及山地離島地區一覽表",
+  "images": [
+   "att079_p1.png",
+   "att079_p2.png",
+   "att079_p3.png"
+  ]
+ },
+ {
+  "label": "附表三十五",
+  "title": "附表三十五：成人中風後之手臂或下肢痙攣",
+  "images": [
+   "att080_p1.png",
+   "att080_p2.png",
+   "att080_p3.png",
+   "att080_p4.png"
+  ]
+ },
+ {
+  "label": "附表三十六",
+  "title": "附表三十六：全民健康保險狼瘡腎炎使用belimumab生物製劑申請表",
+  "images": [
+   "att081_p1.png",
+   "att081_p2.png",
+   "att081_p3.png"
+  ]
+ },
+ {
+  "label": "附表三十六之一",
+  "title": "附表三十六之一：全民健康保險全身性狼瘡5-17歲病人使用belimumab生物製劑申請表",
+  "images": [
+   "att082_p1.png",
+   "att082_p2.png",
+   "att082_p3.png",
+   "att082_p4.png"
+  ]
+ },
+ {
+  "label": "附表三十六之二",
+  "title": "附表三十六之二SELENA SLEDAI積分表",
+  "images": [
+   "att083_p1.png",
+   "att083_p2.png",
+   "att083_p3.png",
+   "att083_p4.png",
+   "att083_p5.png",
+   "att083_p6.png",
+   "att083_p7.png",
+   "att083_p8.png"
+  ]
+ },
+ {
+  "label": "附表三十七",
+  "title": "附表三十七-全民健康保險保險對象使用onasemnogene abeparvovec基因療法製劑協議書",
+  "images": [
+   "att084_p1.png",
+   "att084_p2.png",
+   "att084_p3.png"
+  ]
+ },
+ {
+  "label": "附表三十八",
+  "title": "附表三十八-全民健康保險保險對象使用eladocagene exuparvovec基因療法製劑協議書",
+  "images": [
+   "att085_p1.png",
+   "att085_p2.png",
+   "att085_p3.png"
+  ]
+ }
+];
 
     const IMAGE_BASE = 'attachments_images/';
 
