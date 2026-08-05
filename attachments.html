@@ -70,6 +70,19 @@
 
     const PDF_BASE = 'attachment_pdfs/';
 
+    // The "附表名稱" column used to repeat the same 附表編號 that's already shown in the
+    // "編號" column right next to it (e.g. label "附表二-A" + title "附表二-A　全民健康保險...").
+    // This strips that redundant leading label (plus whatever spacing/colon/dash follows it)
+    // so the name column only shows the actual table name. If a title is JUST the label with
+    // nothing else (no separate name was ever recorded), fall back to showing the label as-is
+    // rather than leaving the cell blank.
+    function displayTitle(att) {
+        const { label, title } = att;
+        if (!title || !label || !title.startsWith(label)) return title;
+        const rest = title.slice(label.length).replace(/^[\s\u3000：:\-－、,，]+/, '');
+        return rest.length > 0 ? rest : title;
+    }
+
     function safeCreateIcons() {
         try {
             if (typeof lucide !== 'undefined' && lucide.createIcons) {
@@ -93,7 +106,7 @@
             tr.className = 'hover:bg-slate-50 transition-colors';
             tr.innerHTML = `
                 <td class="px-4 py-3 font-semibold text-blue-700 whitespace-nowrap align-top">${att.label}</td>
-                <td class="px-4 py-3 text-slate-700 align-top">${att.title}</td>
+                <td class="px-4 py-3 text-slate-700 align-top">${displayTitle(att)}</td>
                 <td class="px-4 py-3 text-slate-400 align-top">${att.pages} 頁</td>
                 <td class="px-4 py-3 text-right align-top">
                     <a href="${PDF_BASE}${att.file}" target="_blank" rel="noopener"
@@ -107,21 +120,13 @@
         safeCreateIcons();
     }
 
-    // -----------------------------------------------------------------
-    // 從查詢系統（index.html）點擊 [ATTACH:附表X] 連結進來時，網址會帶
-    // #附表X 這種 hash。這裡負責找到對應的附表列、捲動到該列並短暫
-    // 高亮提示，讓使用者一眼就能找到、點「開啟」看 PDF。
-    // -----------------------------------------------------------------
     function focusFromHash() {
         const raw = decodeURIComponent(location.hash.replace(/^#/, ''));
         if (!raw) return;
         const match = ATTACHMENTS.find(a => a.label === raw);
         if (!match) return;
-
-        // Make sure the filter box isn't hiding the matched row
         document.getElementById('filter-input').value = '';
         render(ATTACHMENTS);
-
         requestAnimationFrame(() => {
             const row = document.getElementById(`row-${encodeURIComponent(match.label)}`);
             if (!row) return;
